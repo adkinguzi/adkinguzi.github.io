@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>SQLMap os-shell文件写入失败解决</title>
+      <link href="/2020/05/31/SQLMap-os-shell%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/05/31/SQLMap-os-shell%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>1.Windows下：修改my.ini 在[mysqld]内加入 secure_file_priv =<br>2.Linux下：       修改my.cnf 在[mysqld]内加入 secure_file_priv =</p><p>MYSQL新特性secure_file_priv对读写文件的影响,然后重启mysql，即可写入文件！</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>测试</title>
       <link href="/2020/05/31/%E6%B5%8B%E8%AF%95/"/>
       <url>/2020/05/31/%E6%B5%8B%E8%AF%95/</url>
