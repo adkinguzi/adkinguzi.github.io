@@ -4,9 +4,22 @@
   
     
     <entry>
-      <title>SQLMap os-shell文件写入失败解决</title>
-      <link href="/2020/05/31/SQLMap-os-shell%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/"/>
-      <url>/2020/05/31/SQLMap-os-shell%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%A4%B1%E8%B4%A5%E8%A7%A3%E5%86%B3/</url>
+      <title>APP在线检测网站集合</title>
+      <link href="/2020/05/31/APP%E5%9C%A8%E7%BA%BF%E6%A3%80%E6%B5%8B%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/"/>
+      <url>/2020/05/31/APP%E5%9C%A8%E7%BA%BF%E6%A3%80%E6%B5%8B%E7%BD%91%E7%AB%99%E9%9B%86%E5%90%88/</url>
+      
+        <content type="html"><![CDATA[<p>腾讯金刚审计系统 <a href="http://service.security.tencent.com/kingkong" target="_blank" rel="noopener">http://service.security.tencent.com/kingkong</a> 免费 无限制<br>腾讯御安全 <a href="http://yaq.qq.com/" target="_blank" rel="noopener">http://yaq.qq.com/</a> 免费 查看漏洞详情需认证<br>阿里聚安全 <a href="http://jaq.alibaba.com/" target="_blank" rel="noopener">http://jaq.alibaba.com/</a> 免费 查看漏洞详情需认证<br>360显微镜 <a href="http://appscan.360.cn/" target="_blank" rel="noopener">http://appscan.360.cn/</a> 免费 无限制<br>360APP漏洞扫描 <a href="http://dev.360.cn/html/vulscan/scanning.html" target="_blank" rel="noopener">http://dev.360.cn/html/vulscan/scanning.html</a> 免费 无限制<br>百度MTC <a href="http://mtc.baidu.com" target="_blank" rel="noopener">http://mtc.baidu.com</a> 9.9元/次 无限制<br>梆梆 <a href="https://dev.bangcle.com" target="_blank" rel="noopener">https://dev.bangcle.com</a> 免费 无限制<br>爱内测 <a href="http://www.ineice.com/" target="_blank" rel="noopener">http://www.ineice.com/</a> 免费 无限制<br>通付盾 <a href="http://www.appfortify.cn/" target="_blank" rel="noopener">http://www.appfortify.cn/</a> 免费 无限制<br>NAGA <a href="http://www.nagain.com/appscan/" target="_blank" rel="noopener">http://www.nagain.com/appscan/</a> 免费 无限制<br>GES审计系统 <a href="http://01hackcode.com/" target="_blank" rel="noopener">http://01hackcode.com/</a> 免费 无限制<br>盘古出品的Janeus<a href="http://appscan.io" target="_blank" rel="noopener">http://appscan.io</a><br>Janus <a href="http://cloud.appscan.io" target="_blank" rel="noopener">http://cloud.appscan.io</a><br>APP逆向main_classify_list <a href="https://android.fallible.co/" target="_blank" rel="noopener">https://android.fallible.co/</a><br>java在线反编译Java decompiler online <a href="http://www.javadecompilers.com" target="_blank" rel="noopener">http://www.javadecompilers.com</a><br>腾讯电脑管家：哈勃 <a href="http://habo.qq.com/" target="_blank" rel="noopener">http://habo.qq.com/</a><br>腾讯TSRC：金刚 <a href="http://service.security.tencent.com/" target="_blank" rel="noopener">http://service.security.tencent.com/</a><br>阿里聚安全：<a href="http://jaq.alibaba.com/" target="_blank" rel="noopener">http://jaq.alibaba.com/</a><br>西安交通大学 sanddroid：<a href="http://sanddroid.xjtu.edu.cn/#home" target="_blank" rel="noopener">http://sanddroid.xjtu.edu.cn/#home</a><br>金山火眼：<a href="http://fireeye.ijinshan.com/analyse.html" target="_blank" rel="noopener">http://fireeye.ijinshan.com/analyse.html</a><br>瀚海源文件B超：<a href="https://b-chao.com" target="_blank" rel="noopener">https://b-chao.com</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>SQLMap_os-shell文件写入失败可能性</title>
+      <link href="/2020/05/31/SQLMap_os-shell%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%A4%B1%E8%B4%A5%E5%8F%AF%E8%83%BD%E6%80%A7/"/>
+      <url>/2020/05/31/SQLMap_os-shell%E6%96%87%E4%BB%B6%E5%86%99%E5%85%A5%E5%A4%B1%E8%B4%A5%E5%8F%AF%E8%83%BD%E6%80%A7/</url>
       
         <content type="html"><![CDATA[<p>1.Windows下：修改my.ini 在[mysqld]内加入 secure_file_priv =<br>2.Linux下：       修改my.cnf 在[mysqld]内加入 secure_file_priv =</p><p>MYSQL新特性secure_file_priv对读写文件的影响,然后重启mysql，即可写入文件！</p>]]></content>
       
