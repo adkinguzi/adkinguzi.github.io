@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>梦想cms v1.4 后台存在任意文件读取漏洞</title>
+      <link href="/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/"/>
+      <url>/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/</url>
+      
+        <content type="html"><![CDATA[<p><strong>我的第一个CNVD编号：CNVD-2020-10212</strong></p><p><strong>实验环境：win7 专业版  梦想cms v1.4 phpstudy</strong></p><p>漏洞位置：<br>template\admin\Template\temedit.html目录下的模版编辑功能<br> <img src="https://img-blog.csdnimg.cn/2020032109291647.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现该地方直接将路径和文件名进行了拼接，其中代码关键在于变量$dir的获取<br>搜索editfile函数<br><img src="https://img-blog.csdnimg.cn/20200321093041502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="11"></p><p>发现$dir直接通过GET方式进行获取，没有进行过滤，且直接拼接进文件内容请求链接。<br>漏洞链接为：<br><code>xxx.com/admin.php?m=Template&amp;a=editfile&amp;dir=default/error.html</code><br>随便在目录下创建1.txt（内容为happy new year）验证猜想。<br>  <img src="https://img-blog.csdnimg.cn/20200321092942146.png" alt="在这里插入图片描述"></p><p>将dir参数值改为“../1.txt”，发现成功获取文件内容。</p><p><img src="https://img-blog.csdnimg.cn/20200321093134902.png" alt="在这里插入图片描述"></p><p>构造payload,尝试获取C盘根目录的Windows/system.ini文件<br><code>xxx.com/admin.php?m=Template&amp;a=editfile&amp;dir=../../../../../Windows/system.ini</code><br><img src="https://img-blog.csdnimg.cn/20200321093149160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>成功验证！</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Gitee七周年码力检测1-4关writeup</title>
       <link href="/2020/06/01/Gitee%E4%B8%83%E5%91%A8%E5%B9%B4%E7%A0%81%E5%8A%9B%E6%A3%80%E6%B5%8B1-4%E5%85%B3writeup/"/>
       <url>/2020/06/01/Gitee%E4%B8%83%E5%91%A8%E5%B9%B4%E7%A0%81%E5%8A%9B%E6%A3%80%E6%B5%8B1-4%E5%85%B3writeup/</url>

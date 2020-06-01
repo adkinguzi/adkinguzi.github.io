@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="我的第一个CNVD编号：CNVD-2020-10212 实验环境：win7 专业版  梦想cms v1.4 phpstudy 漏洞位置：template\admin\Template\temedit.html目录下的模版编辑功能 发现该地方直接将路径和文件名进行了拼接，其中代码关键在于变量$dir的获取搜索editfile函数 发现$dir直接通过GET方式进行获取，没有进行过滤，且直接拼接进文件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="梦想cms v1.4 后台存在任意文件读取漏洞">
+<meta property="og:url" content="https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/index.html">
+<meta property="og:site_name" content="upkn">
+<meta property="og:description" content="我的第一个CNVD编号：CNVD-2020-10212 实验环境：win7 专业版  梦想cms v1.4 phpstudy 漏洞位置：template\admin\Template\temedit.html目录下的模版编辑功能 发现该地方直接将路径和文件名进行了拼接，其中代码关键在于变量$dir的获取搜索editfile函数 发现$dir直接通过GET方式进行获取，没有进行过滤，且直接拼接进文件">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020032109291647.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200321093041502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200321092942146.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200321093134902.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200321093149160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2020-06-01T14:45:52.000Z">
+<meta property="article:modified_time" content="2020-06-01T14:46:24.832Z">
+<meta property="article:author" content="upkn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020032109291647.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>梦想cms v1.4 后台存在任意文件读取漏洞</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/friendlinks">friendlink</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/06/01/Gitee%E4%B8%83%E5%91%A8%E5%B9%B4%E7%A0%81%E5%8A%9B%E6%A3%80%E6%B5%8B1-4%E5%85%B3writeup/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&text=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&is_video=false&description=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=梦想cms v1.4 后台存在任意文件读取漏洞&body=Check out this article: https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&name=梦想cms v1.4 后台存在任意文件读取漏洞&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&t=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        梦想cms v1.4 后台存在任意文件读取漏洞
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">upkn</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-06-01T14:45:52.000Z" itemprop="datePublished">2020-06-01</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><strong>我的第一个CNVD编号：CNVD-2020-10212</strong></p>
+<p><strong>实验环境：win7 专业版  梦想cms v1.4 phpstudy</strong></p>
+<p>漏洞位置：<br>template\admin\Template\temedit.html目录下的模版编辑功能<br> <img src="https://img-blog.csdnimg.cn/2020032109291647.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现该地方直接将路径和文件名进行了拼接，其中代码关键在于变量$dir的获取<br>搜索editfile函数<br><img src="https://img-blog.csdnimg.cn/20200321093041502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="11"></p>
+<p>发现$dir直接通过GET方式进行获取，没有进行过滤，且直接拼接进文件内容请求链接。<br>漏洞链接为：<br><code>xxx.com/admin.php?m=Template&amp;a=editfile&amp;dir=default/error.html</code><br>随便在目录下创建1.txt（内容为happy new year）验证猜想。<br>  <img src="https://img-blog.csdnimg.cn/20200321092942146.png" alt="在这里插入图片描述"></p>
+<p>将dir参数值改为“../1.txt”，发现成功获取文件内容。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200321093134902.png" alt="在这里插入图片描述"></p>
+<p>构造payload,尝试获取C盘根目录的Windows/system.ini文件<br><code>xxx.com/admin.php?m=Template&amp;a=editfile&amp;dir=../../../../../Windows/system.ini</code><br><img src="https://img-blog.csdnimg.cn/20200321093149160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>成功验证！</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/friendlinks">friendlink</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&text=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&is_video=false&description=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=梦想cms v1.4 后台存在任意文件读取漏洞&body=Check out this article: https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&title=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&name=梦想cms v1.4 后台存在任意文件读取漏洞&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/01/%E6%A2%A6%E6%83%B3cms-v1-4-%E5%90%8E%E5%8F%B0%E5%AD%98%E5%9C%A8%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/&t=梦想cms v1.4 后台存在任意文件读取漏洞" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2019-2020
+    upkn
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/friendlinks">friendlink</a></li>
+         
+          <li><a href="/about">About</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
