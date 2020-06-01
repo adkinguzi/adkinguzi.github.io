@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Gitee七周年码力检测1-4关writeup</title>
+      <link href="/2020/06/01/Gitee%E4%B8%83%E5%91%A8%E5%B9%B4%E7%A0%81%E5%8A%9B%E6%A3%80%E6%B5%8B1-4%E5%85%B3writeup/"/>
+      <url>/2020/06/01/Gitee%E4%B8%83%E5%91%A8%E5%B9%B4%E7%A0%81%E5%8A%9B%E6%A3%80%E6%B5%8B1-4%E5%85%B3writeup/</url>
+      
+        <content type="html"><![CDATA[<p><code>题目地址：https://oschina.gitee.io/gitee-7th/#/game</code></p><h2 id="0x01-第一关"><a href="#0x01-第一关" class="headerlink" title="0x01 第一关"></a>0x01 第一关</h2><p><img src="https://imgkr.cn-bj.ufileos.com/fa9c2c21-935a-447c-b71f-ebe03d7c1d1c.png" alt=""></p><h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><p>base64解码字符串，拼接<code>gitee</code>,访问最终地址：<code>https://gitee.com/mvphp</code>即可找到flag</p><p><img src="https://imgkr.cn-bj.ufileos.com/9f39e2e0-fa4d-4522-a445-4820e2b513cd.png" alt=""></p><h2 id="0x02-第二关"><a href="#0x02-第二关" class="headerlink" title="0x02 第二关"></a>0x02 第二关</h2><p><img src="https://imgkr.cn-bj.ufileos.com/72c79231-25ad-42d6-ad0d-54238264cbf2.png" alt=""></p><h3 id="解题思路：-1"><a href="#解题思路：-1" class="headerlink" title="解题思路："></a>解题思路：</h3><p>在gitee搜索<code>阴祸德芙</code>，找到房间，并打开桌子文件，利用在线网站解密摩斯密码皆可通关，最终答案为<code>saiban</code></p><p><img src="https://imgkr.cn-bj.ufileos.com/394af19a-d470-4c54-a669-e02a276c85a2.png" alt=""><br><img src="https://imgkr.cn-bj.ufileos.com/60f1e54d-46d7-40cd-bd90-5835ea8c47b1.png" alt=""></p><h2 id="0x03-第三关"><a href="#0x03-第三关" class="headerlink" title="0x03 第三关"></a>0x03 第三关</h2><p><img src="https://imgkr.cn-bj.ufileos.com/f59a5fa6-8c34-452e-8aba-4b66b37e1446.png" alt=""></p><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>利用给出文章的音调排列，一二声为平，代表数字0。三四声为仄，代表数字1。</p><p>利用在线网站进行二进制转ASCII，文章最终翻译为<br><br>01100010 b<br><br>01110101 u<br><br>01100111 g<br><br>01110000 p<br><br>01101100 l<br><br>01100001 a<br><br>01101110 n<br><br>01100101 e<br><br>01110100 t<br><br>flag为<code>bugplanet</code></p><h2 id="0x04-第四关"><a href="#0x04-第四关" class="headerlink" title="0x04 第四关"></a>0x04 第四关</h2><p><img src="https://imgkr.cn-bj.ufileos.com/773e9609-72fe-44bb-9029-855066ad2032.png" alt=""></p><h3 id="解题思路-1"><a href="#解题思路-1" class="headerlink" title="解题思路"></a>解题思路</h3><p>说是有规律，但是没找出来，233。<br></p><p>ID位置确实三位字符，<br>第一位可能为<code>JXLMN</code>中一位<br>第二位可能为<code>PQRST</code>中一位<br>第三位确定为<code>X</code><br></p><p>密码位置两位字符，<br>第一位可能为<code>fgh</code>中一位<br>第二位可能为<code>opqr</code>中一位<br></p><p>利用了web爆破思路进行爆破</p><p><img src="https://imgkr.cn-bj.ufileos.com/2822980f-0910-4842-9d23-7b2d789c102b.png" alt=""></p><p><img src="https://imgkr.cn-bj.ufileos.com/af5de26e-4986-4430-ac49-dd1b49cf43bd.png" alt=""></p><p>登录后发现平面图，直接F12审查黄点元素，填入坐标格式flag即可，最终flag为<code>83,117</code></p><p><img src="https://imgkr.cn-bj.ufileos.com/4ee52195-6987-4920-984c-edbcc2dc3157.png" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>seacms getshell</title>
       <link href="/2020/06/01/seacms-getshell/"/>
       <url>/2020/06/01/seacms-getshell/</url>
