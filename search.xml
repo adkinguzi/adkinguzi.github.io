@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>CVE-2019-0708代码执行复现</title>
+      <link href="/2020/06/03/CVE-2019-0708%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%A4%8D%E7%8E%B0/"/>
+      <url>/2020/06/03/CVE-2019-0708%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%A4%8D%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<p>需要注意几点，早上踩坑了</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">1 目标机需要开启3389服务</span><br><span class="line"></span><br><span class="line">2 需要下载最新的exp到msf中替换</span><br><span class="line"></span><br><span class="line">3 使用 set rhost ip</span><br><span class="line">  set target 3(虚拟机)</span><br><span class="line"></span><br><span class="line">生成交互式cmd</span><br></pre></td></tr></table></figure><p>工具使用的是msf,利用成功可以直接远程执行命令。<br><img src="https://img-blog.csdnimg.cn/20191112190653333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Redis通过备份功能实现的三种攻击方法</title>
       <link href="/2020/06/03/Redis%E9%80%9A%E8%BF%87%E5%A4%87%E4%BB%BD%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/"/>
       <url>/2020/06/03/Redis%E9%80%9A%E8%BF%87%E5%A4%87%E4%BB%BD%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E7%9A%84%E4%B8%89%E7%A7%8D%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95/</url>
