@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>搜索工具Everything 配置不当导致信息泄漏</title>
+      <link href="/2020/06/03/%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7Everything-%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E5%AF%BC%E8%87%B4%E4%BF%A1%E6%81%AF%E6%B3%84%E6%BC%8F/"/>
+      <url>/2020/06/03/%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7Everything-%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E5%AF%BC%E8%87%B4%E4%BF%A1%E6%81%AF%E6%B3%84%E6%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p>工具有两种方式可以实现文件共享，默认不开启。若无意开启可能导致文件内容被共享到互联网。<br><img src="https://img-blog.csdnimg.cn/20191112185218665.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p><p><img src="https://img-blog.csdnimg.cn/20191112185237651.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191112185309347.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM5MzI2ODE2,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CVE-2019-0708代码执行复现</title>
       <link href="/2020/06/03/CVE-2019-0708%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%A4%8D%E7%8E%B0/"/>
       <url>/2020/06/03/CVE-2019-0708%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%A4%8D%E7%8E%B0/</url>
