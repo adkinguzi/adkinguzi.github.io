@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="网站在未经验证的情况下将不受信任的用户输入嵌入CSV文件时，就可能会发生CSV注入。当用户使用Excel打开CSV文件时，该软件会将任何以&#x3D;开头的单元格解释为公式。 以下是可以用来注入恶意payload的一些功能。 excel中的超链接函数语法：HYPERLINK(link_location, [friendly_name])  命令执行Excel提供了DDE（Dynamic Data Excha">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CVS注入漏洞利用">
-<meta property="og:url" content="https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/index.html">
+<meta property="og:title" content="CSV注入漏洞基本利用">
+<meta property="og:url" content="https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/index.html">
 <meta property="og:site_name" content="乌兹永远的神">
 <meta property="og:description" content="网站在未经验证的情况下将不受信任的用户输入嵌入CSV文件时，就可能会发生CSV注入。当用户使用Excel打开CSV文件时，该软件会将任何以&#x3D;开头的单元格解释为公式。 以下是可以用来注入恶意payload的一些功能。 excel中的超链接函数语法：HYPERLINK(link_location, [friendly_name])  命令执行Excel提供了DDE（Dynamic Data Excha">
 <meta property="og:locale" content="en_US">
@@ -21,8 +21,8 @@
 <meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/69753de9-7ee6-4acb-b6c6-a6977498176b.png">
 <meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/6147bd2e-ab00-403f-8cb8-7cba5bd8dd5d.png">
 <meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/239d0810-31f0-4367-8b36-81408d386daa.png">
-<meta property="article:published_time" content="2020-06-01T14:23:55.000Z">
-<meta property="article:modified_time" content="2020-06-04T06:47:16.000Z">
+<meta property="article:published_time" content="2020-06-04T13:10:34.000Z">
+<meta property="article:modified_time" content="2020-06-04T13:11:22.632Z">
 <meta property="article:author" content="upkn">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://imgkr.cn-bj.ufileos.com/ebfd433e-a7f4-4d6e-be13-ab43e2ffe6bd.png">
@@ -45,7 +45,7 @@
         
     
     <!-- title -->
-    <title>CVS注入漏洞利用</title>
+    <title>CSV注入漏洞基本利用</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -85,10 +85,8 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2020/06/01/Gitee%E4%B8%83%E5%91%A8%E5%B9%B4%E7%A0%81%E5%8A%9B%E6%A3%80%E6%B5%8B1-4%E5%85%B3writeup/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
-        
-        <li><a class="icon" href="/2020/05/31/ThinkCMF%E6%A1%86%E6%9E%B6%E4%BB%BB%E6%84%8F%E5%86%85%E5%AE%B9%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" href="/2020/06/03/%E6%B5%B7%E6%B4%8Bcms%E5%89%8D%E5%8F%B0getshell/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -101,22 +99,22 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&text=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&is_video=false&description=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=CVS注入漏洞利用&body=Check out this article: https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&name=CVS注入漏洞利用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&t=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&text=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&is_video=false&description=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSV注入漏洞基本利用&body=Check out this article: https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&name=CSV注入漏洞基本利用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&t=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#excel中的超链接函数"><span class="toc-number">1.</span> <span class="toc-text">excel中的超链接函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令执行"><span class="toc-number">2.</span> <span class="toc-text">命令执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用方式"><span class="toc-number"></span> <span class="toc-text">利用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#窃取信息"><span class="toc-number">1.</span> <span class="toc-text">窃取信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载并执行exe"><span class="toc-number">2.</span> <span class="toc-text">下载并执行exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mshta"><span class="toc-number">3.</span> <span class="toc-text">mshta</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习地址"><span class="toc-number"></span> <span class="toc-text">学习地址</span></a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#excel中的超链接函数"><span class="toc-number">1.</span> <span class="toc-text">excel中的超链接函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令执行"><span class="toc-number">2.</span> <span class="toc-text">命令执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用方式"><span class="toc-number"></span> <span class="toc-text">利用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#窃取信息"><span class="toc-number">1.</span> <span class="toc-text">窃取信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载并执行exe"><span class="toc-number">2.</span> <span class="toc-text">下载并执行exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mshta"><span class="toc-number">3.</span> <span class="toc-text">mshta</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number"></span> <span class="toc-text">参考</span></a>
     </div>
   </span>
 </div>
@@ -128,7 +126,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        CVS注入漏洞利用
+        CSV注入漏洞基本利用
     </h1>
 
 
@@ -140,7 +138,7 @@
       
     <div class="postdate">
       
-        <time datetime="2020-06-01T14:23:55.000Z" itemprop="datePublished">2020-06-01</time>
+        <time datetime="2020-06-04T13:10:34.000Z" itemprop="datePublished">2020-06-04</time>
         
       
     </div>
@@ -192,11 +190,8 @@
 <p><img src="https://imgkr.cn-bj.ufileos.com/6147bd2e-ab00-403f-8cb8-7cba5bd8dd5d.png" alt=""></p>
 <p>点击是后就能看到机器上线：</p>
 <p><img src="https://imgkr.cn-bj.ufileos.com/239d0810-31f0-4367-8b36-81408d386daa.png" alt=""></p>
-<h2 id="学习地址"><a href="#学习地址" class="headerlink" title="学习地址"></a>学习地址</h2><ul>
-<li><p><a href="https://www.freebuf.com/vuls/195656.html" target="_blank" rel="noopener">浅谈CSV注入漏洞</a></p>
-</li>
-<li><p>[CSV Injection](</p>
-</li>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.freebuf.com/vuls/195656.html" target="_blank" rel="noopener">浅谈CSV注入漏洞</a></li>
 </ul>
 
   </div>
@@ -223,22 +218,22 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#excel中的超链接函数"><span class="toc-number">1.</span> <span class="toc-text">excel中的超链接函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令执行"><span class="toc-number">2.</span> <span class="toc-text">命令执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用方式"><span class="toc-number"></span> <span class="toc-text">利用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#窃取信息"><span class="toc-number">1.</span> <span class="toc-text">窃取信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载并执行exe"><span class="toc-number">2.</span> <span class="toc-text">下载并执行exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mshta"><span class="toc-number">3.</span> <span class="toc-text">mshta</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习地址"><span class="toc-number"></span> <span class="toc-text">学习地址</span></a>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#excel中的超链接函数"><span class="toc-number">1.</span> <span class="toc-text">excel中的超链接函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令执行"><span class="toc-number">2.</span> <span class="toc-text">命令执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用方式"><span class="toc-number"></span> <span class="toc-text">利用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#窃取信息"><span class="toc-number">1.</span> <span class="toc-text">窃取信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载并执行exe"><span class="toc-number">2.</span> <span class="toc-text">下载并执行exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mshta"><span class="toc-number">3.</span> <span class="toc-text">mshta</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考"><span class="toc-number"></span> <span class="toc-text">参考</span></a>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&text=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&is_video=false&description=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=CVS注入漏洞利用&body=Check out this article: https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&name=CVS注入漏洞利用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&t=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&text=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&is_video=false&description=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CSV注入漏洞基本利用&body=Check out this article: https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&title=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&name=CSV注入漏洞基本利用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/&t=CSV注入漏洞基本利用" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
