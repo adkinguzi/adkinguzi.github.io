@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="11.绕过思路：对文件的内容，数据。数据包进行处理。  关键点在这里Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;ian.php&quot; 将form-data;        修改为~form-data;  12.通过替换大小写来进行绕过  Content-Disposition:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="上传绕过">
+<meta property="og:url" content="https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/index.html">
+<meta property="og:site_name" content="乌兹永远的神">
+<meta property="og:description" content="11.绕过思路：对文件的内容，数据。数据包进行处理。  关键点在这里Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;ian.php&quot; 将form-data;        修改为~form-data;  12.通过替换大小写来进行绕过  Content-Disposition:">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-20T13:25:20.000Z">
+<meta property="article:modified_time" content="2020-06-20T13:27:52.456Z">
+<meta property="article:author" content="upkn">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>上传绕过</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories">Category</a></li>
+         
+          <li><a href="/friendlinks">Friendlink</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&text=上传绕过" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&is_video=false&description=上传绕过" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=上传绕过&body=Check out this article: https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&name=上传绕过&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&t=上传绕过" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        上传绕过
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">乌兹永远的神</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-06-20T13:25:20.000Z" itemprop="datePublished">2020-06-20</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">渗透测试</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.绕过思路：对文件的内容，数据。数据包进行处理。  关键点在这里Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;ian.php&quot; 将form-data;        修改为~form-data;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.通过替换大小写来进行绕过  Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh.php&quot; Content-Type: application&#x2F;octet-stream 将Content-Disposition  修改为content-Disposition 将 form-data        修改为Form-data 将 Content-Type      修改为content-Type</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.通过删减空格来进行绕过  Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh.php&quot; Content-Type: application&#x2F;octet-stream 将Content-Disposition: form-data      冒号后面 增加或减少一个空格 将form-data; name&#x3D;&quot;file&quot;;          分号后面 增加或减少一个空格 将 Content-Type: application&#x2F;octet-stream  冒号后面 增加一个空格</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4.通过字符串拼接绕过  看Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh3.php&quot; 将 form-data 修改为  f+orm-data 将 from-data 修改为  form-d+ata</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.双文件上传绕过  &lt;form action&#x3D;&quot;https:&#x2F;&#x2F;www.xxx.com&#x2F;xxx.asp(php)&quot; method&#x3D;&quot;post&quot; name&#x3D;&quot;form1&quot; enctype&#x3D;&quot;multipart&#x2F;form‐data&quot;&gt; &lt;input name&#x3D;&quot;FileName1&quot; type&#x3D;&quot;FILE&quot; class&#x3D;&quot;tx1&quot; size&#x3D;&quot;40&quot;&gt; &lt;input name&#x3D;&quot;FileName2&quot; type&#x3D;&quot;FILE&quot; class&#x3D;&quot;tx1&quot; size&#x3D;&quot;40&quot;&gt; &lt;input type&#x3D;&quot;submit&quot; name&#x3D;&quot;Submit&quot; value&#x3D;&quot;上传&quot;&gt; &lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6.HTTP header 属性值绕过  Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh.php&quot; 我们通过替换form-data 为*来绕过 Content-Disposition: *; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh.php&quot;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7.HTTP header 属性名称绕过  源代码: Content-Disposition: form-data; name&#x3D;&quot;image&quot;; filename&#x3D;&quot;085733uykwusqcs8vw8wky.png&quot;Content-Type: image&#x2F;png 绕过内容如下： Content-Disposition: form-data; name&#x3D;&quot;image&quot;; filename&#x3D;&quot;085733uykwusqcs8vw8wky.png C.php&quot; 删除掉ontent-Type: image&#x2F;jpeg只留下c，将.php加c后面即可，但是要注意额，双引号要跟着c.php&quot;.</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8.等效替换绕过  原内容： Content-Type: multipart&#x2F;form-data; boundary&#x3D;---------------------------471463142114 修改后: Content-Type: multipart&#x2F;form-data; boundary &#x3D;---------------------------471463142114 boundary后面加入空格。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9.修改编码绕过  使用UTF-16、Unicode、双URL编码等等 WTS-WAF 绕过上传 原内容： Content-Disposition: form-data; name&#x3D;&quot;up_picture&quot;; filename&#x3D;&quot;xss.php&quot; 添加回车 Content-Disposition: form-data; name&#x3D;&quot;up_picture&quot;; filename&#x3D;&quot;xss.php&quot; 百度云上传绕过 百度云绕过就简单的很多很多，在对文件名大小写上面没有检测php是过了的，Php就能过，或者PHP，一句话自己合成图片马用Xise连接即可。 Content-Disposition: form-data; name&#x3D;&quot;up_picture&quot;; filename&#x3D;&quot;xss.jpg .Php&quot;</span><br></pre></td></tr></table></figure>
+
+
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories">Category</a></li>
+         
+          <li><a href="/friendlinks">Friendlink</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&text=上传绕过" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&is_video=false&description=上传绕过" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=上传绕过&body=Check out this article: https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&title=上传绕过" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&name=上传绕过&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://adkinguzi.github.io/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/&t=上传绕过" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2019-2020
+    upkn
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/categories">Category</a></li>
+         
+          <li><a href="/friendlinks">Friendlink</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+<script src="/lib/clipboard/clipboard.min.js"></script>
+
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

